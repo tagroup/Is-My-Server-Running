@@ -1,6 +1,6 @@
 <?php
 /**
- * User: thomasloughlin
+ * https://github.com/tagroup/Is-My-Server-Running
  * Date: 2/7/12
  * Time: 6:06 PM
  */
