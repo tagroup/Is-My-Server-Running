@@ -1,1 +1,8 @@
-/* */
+/*
+A simple server checker
+Goal: check status of different pages / ports, allow posting and polling of data, logging to file or db,
+and notification through twilio or aws
+
+no timeline established
+
+*/
