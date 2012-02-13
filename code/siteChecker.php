@@ -4,6 +4,7 @@
  * Date: 2/7/12
  * Time: 6:06 PM
  */
+require_once('../moveIt/aws/sdk.class.php');
 class siteChecker
 {
     var $siteURL, $pageData, $pageInfo;
@@ -28,13 +29,18 @@ class siteChecker
     function check()
     {
         $this->getSiteInfo();
-        //if site down alert
-        //if site log true = log
-        if($this->pageInfo['http_code']==200){
-            return true;
+        if($this->isOK())
+        {
+            echo "Site is running!";
         }
-        else {
-            return false;
+        else
+        {
+            //TODO: make not hack
+            $message=$this->siteURL . " is down.  " .$this->returnCodePretty();
+            $sns = new AmazonSNS();
+            $topic_arn = ''; //fill in
+            $response=$sns->publish($topic_arn,$message);
+            print_r($response->isOK());
         }
     }
     function returnCodePretty()
@@ -62,6 +68,15 @@ class siteChecker
         $this->pageData = curl_exec($ch);
         $this->pageInfo= curl_getinfo($ch);
         curl_close($ch);
+    }
+    function isOK($codes = array(200, 201, 202,203, 204, 205, 206))
+    {
+        if (is_array($codes))
+        {
+            return in_array($this->pageInfo['http_code'], $codes);
+        }
+
+        return $this->pageInfo['http_code'] === $codes;
     }
     function httpErrorsLoad()
     {
