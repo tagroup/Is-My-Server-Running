@@ -4,7 +4,7 @@
  * Date: 2/7/12
  * Time: 6:06 PM
  */
-require_once('../moveIt/aws/sdk.class.php');
+require_once('notify.php');
 class siteChecker
 {
     var $siteURL, $pageData, $pageInfo;
@@ -37,10 +37,8 @@ class siteChecker
         {
             //TODO: make not hack
             $message=$this->siteURL . " is down.  " .$this->returnCodePretty();
-            $sns = new AmazonSNS();
-            $topic_arn = ''; //fill in
-            $response=$sns->publish($topic_arn,$message);
-            print_r($response->isOK());
+            $notify= new notify();
+            echo $notify->sendNotify($message);
         }
     }
     function returnCodePretty()
