@@ -4,7 +4,7 @@
  * Time: 10:27 PM
  **/
 
-require_once('../moveIt/aws/sdk.class.php');
+require_once('../../../code/moveIt/aws/sdk.class.php');
 
 class notify
 {

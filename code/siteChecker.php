@@ -17,6 +17,7 @@ class siteChecker
         if($sURL=='')
         {
             //TODO: throw error
+
         }
         else
         {
