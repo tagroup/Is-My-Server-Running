@@ -5,4 +5,21 @@ and notification through twilio or aws
 
 no timeline established
 
+To Use Now:
+
+1. Install AWS PHP SDK through Pear or download and inclusion (configure the aws config file with your keys from Amazon)
+2. Setup your topic and add your contact to your Amazon SNS account at the management tool at aws.amazon.com
+3. Keep you topic id handy - you will need this for the notify class.
+4. Git this library and set the notify id in the constructor of notify.php (this will change)
+5. Test
+6. Set a cron job or scheduled task to run check at your interval
+
+Only usage now:
+
+<?php
+    require('code/siteChecker.php');
+    $checker= new siteChecker("http://dontbealone.org/");
+    echo $checker->check();
+
+
 */
