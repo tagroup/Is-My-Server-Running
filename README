@@ -5,6 +5,8 @@ and notification through twilio or aws
 
 no timeline established
 
+Notify uses AWS SNS currently because of Amazon's free tier.
+
 To Use Now:
 
 1. Install AWS PHP SDK through Pear or download and inclusion (configure the aws config file with your keys from Amazon)
